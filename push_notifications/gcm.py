@@ -48,7 +48,7 @@ def _gcm_send(data, content_type, application_id):
 	request = Request(get_manager().get_post_url("GCM", application_id), data, headers)
 	return urlopen(
 		request, timeout=get_manager().get_error_timeout("GCM", application_id)
-	).read().decode("utf-8")
+	).read()
 
 
 def _fcm_send(data, content_type, application_id):
@@ -62,7 +62,7 @@ def _fcm_send(data, content_type, application_id):
 	request = Request(get_manager().get_post_url("FCM", application_id), data, headers)
 	return urlopen(
 		request, timeout=get_manager().get_error_timeout("FCM", application_id)
-	).read().decode("utf-8")
+	).read()
 
 
 def _cm_handle_response(registration_ids, response_data, cloud_type, application_id=None):
