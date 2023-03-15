@@ -67,7 +67,7 @@ def _wns_authenticate(scope="notify.windows.com", application_id=None):
 			raise WNSAuthenticationError("Authentication failed, check your WNS settings.")
 		raise err
 
-	oauth_data = response.read().decode("utf-8")
+	oauth_data = response.read()
 	try:
 		oauth_data = json.loads(oauth_data)
 	except Exception:
@@ -136,7 +136,7 @@ def _wns_send(uri, data, wns_type="wns/toast", application_id=None):
 			raise err
 		raise WNSNotificationResponseError("HTTP %i: %s" % (err.code, msg))
 
-	return response.read().decode("utf-8")
+	return response.read()
 
 
 def _wns_prepare_toast(data, **kwargs):
